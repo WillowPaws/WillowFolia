@@ -1,0 +1,37 @@
+name: Deploy Web
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    name: Build web
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Install dependencies
+        run: npm ci
+      - name: Build web
+        run: npm run build:web
+      - name: Upload artifact for GitHub Pages
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: ./web-build
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      contents: read
+    steps:
+      - name: Deploy
+        uses: actions/deploy-pages@v1
