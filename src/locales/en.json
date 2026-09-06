@@ -1,0 +1,12 @@
+{
+  "translation": {
+    "app_name": "WillowFolia",
+    "collection": "Collection",
+    "dashboard": "Dashboard",
+    "settings": "Settings",
+    "add_event": "+ Add event",
+    "add_plant": "Add plant",
+    "quick_add_placeholder": "Photo + name required",
+    "possible_attention": "Possible attention needed"
+  }
+}
