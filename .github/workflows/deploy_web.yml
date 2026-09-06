@@ -18,6 +18,8 @@ jobs:
           node-version: '18'
       - name: Install dependencies
         run: npm install
+      - name: Prepare expo for web
+        run: npx expo prebuild --platform web --skip-plugins
       - name: Build web
         run: npm run build:web
       - name: Upload artifact for GitHub Pages
